@@ -1,0 +1,19 @@
+<!-- 詳細画面のタイトル -->
+<h2 class="text-center mt-5">登録内容</h2>
+
+<!-- テーブル -->
+<table class="table table-bordered mx-auto w-50 mt-5">
+  <tbody>
+    <tr>
+      <th class="table-primary text-center" style="width:30%">ユーザー名</th>
+      <td style="width:70%"><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ユーザー登録内容編集画面へのリンク -->
+<p class="text-center mt-3"><%= link_to("登録内容を編集", edit_user_path(@user)) %></p>

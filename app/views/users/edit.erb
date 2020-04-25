@@ -1,0 +1,24 @@
+<!-- ユーザー登録情報編集フォーム -->
+<%= form_with local: true, model: @user, class: "card mx-auto border-dark w-50 mt-4 mb-4" do |f| %>
+  <h5 class="card-header text-center text-white bg-warning">ユーザー登録情報編集フォーム</h5>
+  <div class="card-body">
+    <div class="row form-group">
+      <%= f.label :name, "ユーザー名", class: "col-sm-3" %>
+      <%= f.text_field :name, class: "col-sm-8 form-control", value: @user.name %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :email, "メールアドレス", class: "col-sm-3" %>
+      <%= f.text_field :email, class: "col-sm-8 form-control", value: @user.email %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :password, "パスワード ", class: "col-sm-3" %>
+      <%= f.text_field :password, class: "col-sm-8 form-control" %>
+    </div>
+    <div class="row">
+      <%= f.submit "編集する", class: "btn offset-sm-3 btn-sm btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<!-- 投稿一覧画面へのリンク -->
+<p class="text-center mt-3"><%= link_to("投稿一覧へ戻る", posts_path) %></p>

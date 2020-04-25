@@ -1,0 +1,35 @@
+<!-- テーブルのタイトル -->
+<h2 class="text-center mt-5">ユーザー一覧</h2>
+
+<!-- テーブル -->
+<table class="table table-bordered mx-auto w-50 my-5">
+  <thead class="table-primary text-center">
+    <tr>
+      <!-- 項目名を表示 -->
+      <th style="width:20%">会員No.</th>
+      <th style="width:80%">ユーザー名</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td class="text-right"><%= user.id %></td>
+      <td>
+        <!-- ユーザー名を表示 -->
+        <%= user.name %>
+        <!-- リンクを表示 -->
+        <% if @current_user %>
+          <% if user.id == @current_user.id %>
+            <%= link_to("削除", user, class: "float-right ml-1", method: :delete, data: { confirm: "本当に退会しますか？" }) %>
+            <%= link_to("編集", edit_user_path(user), class: "float-right ml-1") %>
+            <%= link_to("詳細", user, class: "float-right") %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<!-- 投稿一覧画面へのリンク -->
+<p class="text-center mt-3"><%= link_to("投稿一覧へ戻る", posts_path) %></p>

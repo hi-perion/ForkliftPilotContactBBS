@@ -1,0 +1,45 @@
+<!-- 投稿フォーム -->
+<%= form_with local: true, model: @post, class: "card mx-auto border-dark w-75 mt-4 mb-4" do |f| %>
+  <h5 class="card-header text-center text-white bg-success">新規投稿フォーム</h5>
+  <div class="card-body">
+    <div class="row form-group">
+      <%= f.label :pilot, "パイロット", class: "col-sm-2" %>
+      <%= f.text_field :pilot, class: "col-sm-6 form-control", value: @post.pilot %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :machine, "搭乗機体", class: "col-sm-2" %>
+      <%= f.text_field :machine, class: "col-sm-6 form-control", value: @post.machine %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :image, "画像", class: "col-sm-2" %>
+      <%= f.file_field :image, class: "col-sm-6" %>
+    </div>
+    <div class="row form-group">
+      <%= f.label :affiliation, "所属", class: "col-sm-2" %>
+      <%= f.select :affiliation,
+                   [["地球連邦", "地球連邦"],
+                    ["ジオン", "ジオン"],
+                    ["ティターンズ", "ティターンズ"],
+                    ["エゥーゴ", "エゥーゴ"],
+                    ["ネオ・ジオン", "ネオ・ジオン"] ],
+                   prompt: "選択してください",
+                   selected: @post.affiliation %>
+    </div>
+    <div class="row form-group">
+      <p style="display:inline;" class="col-sm-2">シリーズ</p>
+      <label><%= f.radio_button :series, "機動戦士ガンダム" %>機動戦士ガンダム</label>
+      <label class="ml-2"><%= f.radio_button :series, "機動戦士Zガンダム" %>機動戦士Zガンダム</label>
+      <label class="ml-2"><%= f.radio_button :series, "機動戦士ガンダム 逆襲のシャア" %>機動戦士ガンダム 逆襲のシャア</label>
+    </div>
+    <div class="row form-group">
+      <%= f.label :speech, "セリフ", class: "col-sm-2" %>
+      <%= f.text_area :speech, class: "col-sm-9 form-control", value: @post.speech %>
+    </div>
+    <div class="row">
+      <%= f.submit "投稿する", class: "btn offset-sm-2 btn-sm btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<!-- 投稿一覧画面へのリンク -->
+<p class="text-center mt-3"><%= link_to("投稿一覧へ戻る", posts_path) %></p>

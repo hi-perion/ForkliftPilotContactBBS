@@ -1,0 +1,61 @@
+各ビューごとにCSSとJavaScriptを適用する方法
+(両方セットで説明しているがどちらか一方でも可能)
+
+各ビューごとにCSSとJavaScriptを適用する方法は以下の手順で行う
+(実際の適用例は後述)
+
+  1.全体読み込みになっている設定を解除する
+    1-1.app>assets>stylesheets>application.scssファイルの「 *= require_tree . 」が記述されている行を削除する。
+        (詳しい説明はapp>assets>stylesheets>application.scssファイルを参照すること)
+    1-2.app>assets>javascripts>application.jsファイルの「 //= require_tree . 」が記述されている行を削除する。
+        (詳しい説明はapp>assets>javascripts>application.jsファイルを参照すること)
+
+  2.ビューに読み込ませるためのCSSファイルとJavaScriptファイルを作成する
+    2-1.app>assets>stylesheetsフォルダ内に、ビューに読み込ませるためのCSSファイルを作成する。
+        (参考書や解説サイトには拡張子がscssのファイルを作成するように書いてあるが、拡張子はcssでもいい模様)
+        (scssファイルはSass(CSSの拡張言語)を記述するためのファイル)
+        (この場合はapp>assets>stylesheets>posts_index.cssファイルを作成した)
+    2-2.app>assets>javascriptsフォルダ内に、ビューに読み込ませるためのJavaScriptファイルを作成する。
+        (参考書や解説サイトには拡張子がcoffeeのファイルを作成するように書いてあるが、拡張子はjsでもいい模様)
+        (coffeeファイルはCoffeeScript(JavaScriptの拡張言語)を記述するためのファイル)
+        (この場合はapp>assets>javascripts>posts_index.jsファイルを作成した)
+
+  3.2で作成したファイルをCSSファイルとJavaScriptファイルに変換する
+    (2で作成したファイルが最初からCSSファイルとJavaScriptファイルだった場合でもこの工程は必要である)
+    config>initializers>assets.rbファイルに2で作成したscssファイルとcoffeeファイルを
+    cssファイルとjsファイルに変換するための一文を記述する。
+    (詳しい説明はconfig>initializers>assets.rbファイルを参照すること)
+
+  4.ビューに2で作成したCSSファイルとJavaScriptファイルを読み込むための記述をする
+    (詳しい説明はapp>views>posts>index.erbファイルを参照すること)
+
+  5.サーバーを再起動してCSSとJavaScriptをビューに反映する
+
+以上で2で作成したCSSとJavaScriptを4で指定したビューにのみ適用することができる
+
+
+例としてapp>views>posts>index.erbファイルだけにCSSとJavaScriptを適用する方法を説明する
+
+  1.app>assets>stylesheets>application.scssファイルの「 *= require_tree . 」が記述されている行を削除する。
+    app>assets>javascripts>application.jsファイルの「 //= require_tree . 」が記述されている行を削除する。
+    (詳しい説明は両方のファイルを参照すること)
+
+  2.app>assets>stylesheetsフォルダ内にposts_index.cssという名前のCSSファイルを作成する。
+    app>assets>javascriptsフォルダ内に、posts_index.jsという名前のJavaScriptファイルを作成する。
+
+  3.2で作成したファイルをCSSファイルとJavaScriptファイルに変換するための一文を
+    config>initializers>assets.rbファイルに記述する
+    (詳しい説明はconfig>initializers>assets.rbファイルを参照すること)
+    (2で作成したファイルは最初からCSSファイルとJavaScriptファイルだがこの工程は必要である)
+
+  4.app>views>posts>index.erbファイルに2で作成したposts_index.cssとposts_index.jsを読み込むための記述をする
+    (詳しい説明はapp>views>posts>index.erbファイルを参照すること)
+
+  5.サーバーを再起動すればapp>views>posts>index.erbファイルに2で作成したposts_index.cssとposts_index.jsが適用される
+
+JavaScriptを記述する際は$(function() {処理});の中に処理を記述すること
+(詳しい説明はjQuery_Basicのスライドショー(imgタグを作成する場合)のjQueryProgram.jsを参照すること)
+(こうしないと最初のトップページ読み込み時にJavaScriptが反映されない模様)
+
+Bootstrapで設定した文字色を自作したCSSで上書きできなかったので、
+自作したCSSの後にBootstrapが読み込まれている模様(順番の直し方は調べたがわからなかった)

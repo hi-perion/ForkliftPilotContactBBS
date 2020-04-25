@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>フォークリフト操縦者連絡掲示板</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+
+    <!-- 部分テンプレートを呼び出す方法
+         render partial: '部分テンプレートファイル名'
+         で部分テンプレートファイルの内容を呼び出すことができる。
+         実際の部分テンプレートファイル名の先頭にはアンダーバーが付いているが、
+         renderメソッドで呼び出すときはアンダーバーを付けてはいけないことに注意すること。
+         partial:は呼び出しているのが部分テンプレートであることを明示するためのもので省略してもいい。
+         (解説サイトでは部分テンプレートを呼び出すビューと部分テンプレートが
+          同一階層にある場合は、renderメソッドのファイル指定はファイル名だけでいいと書いてあったが、
+          app>viewsからのパスを指定しなければ動作しなかった)(原因は不明) -->
+    <%= render partial: 'layouts/navbar' %>
+    <!-- 実際の部分テンプレートファイル名は_navbar.html.erbだが、
+         renderメソッドで呼び出すときはnavbarのみでいい。(先頭のアンダーバーも拡張子も必要ない)
+         呼び出し側のビューと部分テンプレートが同一階層にあっても
+         viewsフォルダからのパス指定が必要な模様(理由は不明) -->
+
+
+    <!-- 成功時のフラッシュメッセージ -->
+    <% if flash[:success] %>
+    <p class="alert alert-primary text-center"><%= flash[:success] %></p>
+    <% end %>
+
+    <!-- 告知時のフラッシュメッセージ -->
+    <% if notice %>
+      <p class="alert alert-warning text-center"><%= notice %></p>
+    <% end %>
+
+    <!-- 失敗時のフラッシュメッセージ -->
+    <% if flash.now[:failure] %>      <!-- failure(フェイリヤー)：失敗 -->
+      <p class="alert alert-warning text-center"><%= flash.now[:failure] %></p>
+    <% end %>
+
+    <!-- 警告時のフラッシュメッセージ -->
+    <% if alert %>
+      <p class="alert alert-danger text-center"><%= alert %></p>
+    <% end %>
+
+    <!-- yieldに各ビューが代入される -->
+    <%= yield %>
+
+  </body>
+</html>

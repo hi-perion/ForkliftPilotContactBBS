@@ -1,0 +1,43 @@
+自動更新機能の実装方法
+
+実装するに当たってJavaScriptがapp>views>posts>index.erbファイルのみに反映されるようにしておくこと
+(JavaScriptを指定したビューのみに反映させる方法はapp>views>about_CSS_and_JavaScript_by_the_view.erbファイルを参照すること)
+
+投稿一覧画面の投稿テーブルに新規投稿分のレコードのみ追加するには、
+ajax通信を使って定期的に新規投稿があったかをデータベースに確認して、
+新規投稿があった場合のみ新規投稿分のデータを受信して投稿テーブルに追加するという方法をとる。
+
+ajax通信を使って投稿一覧画面の投稿テーブルに新規投稿分のレコードのみ追加するための手順は以下のようになる
+
+  1.投稿一覧画面の投稿テーブルのレコード(trタグ)1つ1つを識別できるようにするために
+    each文内のtrタグにカスタムデータ属性(data-table_row_id属性)を追加する。
+    (詳しい説明はapp>views>posts>index.erbを参照すること)
+
+  2.最新の投稿レコード(最後尾のtrタグ)を取得できるようにするために
+    投稿テーブルのすべてのtrタグにclass属性を追加する。
+    (詳しい説明はapp>views>posts>index.erbを参照すること)
+
+  3.ajax通信を定期的に行うためにJavaScriptファイルにsetIntervalメソッドを定義する
+    (詳しい説明はapp>assets>javascripts>posts_index.jsファイルを参照すること)
+  
+  4.JavaScriptファイルに更新処理を行うメソッド(updateメソッド)を作成する
+    (3で作成したsetIntervalメソッドのコールバック関数にupdateメソッドを指定することで、
+     定期的にajax通信を行って新規投稿の有無を確認するということになる)
+    (新規投稿があった場合は更新処理を実行し無かった場合はなにもしないという仕組みになる)
+    (この3と4の処理が自動更新処理に当たる)
+    (詳しい説明はapp>assets>javascripts>posts_index.jsのupdateメソッドを参照すること)
+
+  5.4で作成したupdateメソッド内のajaxメソッドが実行された際に、
+    postsコントローラのindexアクションが新規投稿分のJSONデータを返すように設定する
+    (詳しい解説はapp>controllers>posts_controller.rbのindexアクションを参照すること)
+
+  6.jbuilderファイルを作成して5で取得したデータ(@new_posts)をJSONデータに変換して、
+    4で作成したupdateメソッド内のajaxメソッドのdoneメソッドに返すための記述をする
+    (詳しい説明はapp>views>posts>index.json.jbuilderファイルを参照すること)
+
+  7.6から受け取ったJSONデータを使って
+    投稿一覧画面の投稿テーブルに新規投稿分の一行を追加するためのメソッド(addTableRowメソッド)を作成する
+    (このメソッドはupdateメソッド内のajaxメソッドの成功時の処理のfor文内で使われるメソッドとなる)
+
+以上で自動更新機能を実装することが可能となる。
+実装の流れについてはScrapBookのAjax通信の自動更新機能の実装方法も参照すること

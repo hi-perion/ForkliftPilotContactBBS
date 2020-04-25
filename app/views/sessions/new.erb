@@ -1,0 +1,26 @@
+<!-- ページの見出し -->
+<h1 class="text-center mt-5 mb-3">ログイン</h1>
+
+<!-- ログインフォーム -->
+<%= form_with local: true, scope: :session, url: login_path, class: "card mx-auto border-dark w-50 mt-4 mb-4 shadow-lg" do |f| %>
+  <div class="card-body">
+    <div class="row">
+      <%= f.label :email, "メールアドレス", class: "offset-sm-1 col-sm-4" %>
+    </div>
+    <div class="row form-group">
+      <%= f.text_field :email, class: "offset-sm-1 col-sm-9 form-control", value: @email %>
+    </div>
+    <div class="row">
+      <%= f.label :password, "パスワード", class: "offset-sm-1 col-sm-4" %>
+    </div>
+    <div class="row form-group">
+      <%= f.text_field :password, type: "password", class: "offset-sm-1 col-sm-9 form-control", value: @password %>
+    </div>
+    <div class="row">
+      <%= f.submit "ログイン", class: "btn offset-sm-1 btn-sm btn-primary" %>
+    </div>
+  </div>
+<% end %>
+
+<!-- 新規登録画面へのリンク -->
+<h5 class="text-center mt-3"><%= link_to("ユーザー登録される方はこちら", new_user_path) %></h5>

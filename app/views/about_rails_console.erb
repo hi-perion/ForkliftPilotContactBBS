@@ -1,0 +1,21 @@
+Active Record文の結果を確認する方法
+
+「 rails c 」コマンドを実行してRailsコンソールを起動させてから
+Active Record文を実行すると実際に実行されるSQL文とその結果を表示することができる
+
+例：「 User.select("id, name, email") 」 というActive Record文を実行したときに、
+     実際に実行されるSQL文とその結果を確認する方法
+       1.「 rails c 」 コマンドを実行してRailsコンソールを起動する
+       2. Active Record文の結果を整形するために「 Hirb.enable 」というコマンドを実行する
+          (詳しい説明はScrapBookのActiveRecordのRailsコンソールの結果を整形する方法を参照すること)
+       2.「User.select("id, name, email")」というActive Record文を入力して実行する
+       3. 実際に実行されるSQL文と結果が表示される
+       4.「 exit 」 コマンドでRailsコンソールを終了する
+
+Active Record文からSQL文を確認することはできても、
+SQL文からActive Record文を確認することはできない模様
+
+SQL文を直接入力してテーブルの状態を確認する方法はLeone-PCのD:\Study\programming\SQL\メモフォルダ内の
+コマンド操作でテーブルの状態を確認する方法.txtを参照すること
+
+SQL文の書き方はNavicatのLeone-PC_MySQLのsql_basicおよびsql_about_table_joinのクエリを参照すること

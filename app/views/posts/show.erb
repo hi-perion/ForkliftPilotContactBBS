@@ -1,0 +1,39 @@
+<!-- 詳細画面のタイトル -->
+<h2 class="text-center mt-5">セリフの詳細</h2>
+
+<!-- テーブル -->
+<table class="table table-bordered mx-auto w-75 mt-5">
+  <tbody>
+    <tr>
+      <th class="table-primary text-center" style="width:20%">パイロット</th>
+      <td style="width:80%"><%= @post.pilot %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">搭乗機体</th>
+      <td><%= @post.machine %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">所属</th>
+      <td><%= @post.affiliation %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">セリフ</th>
+      <td><%= @post.speech %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">シリーズ</th>
+      <td><%= @post.series %></td>
+    </tr>
+    <tr>
+      <th class="table-primary text-center">画像</th>
+      <% if @post.image.url %>
+        <td><img src="<%= @post.image.url %>" class="img-fluid mx-auto d-block w-50 mt-2" ></td>
+      <% else %>
+        <td><img src="<%= "/no_image.jpg" %>" class="img-fluid mx-auto d-block w-50 mt-2" ></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 投稿一覧画面へのリンク -->
+<p class="text-center mt-3"><%= link_to("投稿一覧へ戻る", posts_path) %></p>
