@@ -11,10 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
 
-// 各ビューごとにCSSを適用するために「 require_tree . 」が記述されている行を削除する。
-// 「 require_tree .」は、このファイル(application.scss)が入っているフォルダ(stylesheetsフォルダ)内のcss(scss)ファイルを
-// すべてのビューに読み込むという意味である。
-
  *= require_self
  */
 

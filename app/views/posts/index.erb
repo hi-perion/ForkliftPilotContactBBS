@@ -1,13 +1,8 @@
-<!-- CSSファイルを読み込む方法
-     <％= stylesheet_link_tag 'ファイル名' %>
-     でapp>assets>stylesheetsフォルダ内にあるファイル(拡張子はcssでもscssでもいい)を読み込むことができる -->
+<!-- CSSファイルの読み込み -->
 <%= stylesheet_link_tag 'posts_index' %>
 
-<!-- JavaScriptファイルを読み込む方法
-     <％= javascript_include_tag 'ファイル名' %>
-     でapp>assets>javascriptsフォルダ内にあるファイル(拡張子はjsでもcoffeeでもいい)を読み込むことができる -->
+<!-- JavaScriptファイルの読み込み -->
 <%= javascript_include_tag 'posts_index' %>
-
 
 <!-- 掲示板のタイトル -->
 <div class="container mt-2">
@@ -33,32 +28,11 @@
       <th style="width:85%">お気に入りのセリフ</th>
     </tr>
   </thead>
-
-  <!-- showビュー(詳細画面)のtbodyタグと区別するためにid属性を追加する -->
   <tbody id="table_body">
-  <!-- id属性を追加する理由はapp>assets>javascripts>posts_index.jsのaddTableRowメソッドを参照すること -->
-
   <% @posts.each do |post| %>
-
-    <!-- カスタムデータ属性について
-         通常HTMLのタグに属性を追加する場合はclassやhrefなどのあらかじめ用意された名前の属性しか付けることができない。
-         しかしカスタムデータ属性を使うことで自作の名前の属性を付けることができるようになる。
-         自作の名前の属性を付けるには「 data-任意の名前 」と記述する。(この場合は「 data-table_row_id 」という名前にした)
-         (カスタムデータ属性の値を取得する方法はapp>assets>javascripts>posts_index.jsのupdateメソッドを参照すること) -->
-
-    <!-- trタグにclass属性とカスタムデータ属性を追加する -->
     <tr class="table_rows" data-table_row_id="<%= post.id %>">
-    <!-- each文で生成されるtrタグの1つ1つを識別できるようにするためにdata-table_row_id属性を追加した。
-         (data-table_row_id属性の値をpostsテーブルのレコードのid番号とすることで、
-          最新の投稿(最後尾のtrタグ)の情報の元となっているpostsテーブルのレコードのid番号を取得できるようになる) -->
-    <!-- each文で生成されたすべてのtrタグを取得できるようにするためにtrタグにclass="table_rows"を追加した。
-         (「 .table_rows:last 」というCSSセレクタの指定方法で最後尾のtrタグのみ取得できるようにするため)
-         (詳しい説明はapp>assets>javascripts>posts_index.jsのupdateメソッドを参照すること) -->
-    <!-- data-table_row_id属性の値にダブルクォーテーションを付ける理由はWaterfoxのScrapBookを参照すること -->
-
       <!-- 投稿者名を表示 -->
       <% if post.user %>
-        <!-- テーブル(モデル)同士の相関関係を定義したのでpost.userで投稿したユーザーのレコードを取得することができる -->
         <td class="text-center"><%= post.user.name %></td>
       <% else %>
         <td class="text-center">退会ユーザー</td>
@@ -68,15 +42,12 @@
         <%= post.speech %>
         <!-- リンクを表示 -->
         <% if post.user_id == @current_user&.id %>
-        <!-- ぼっち演算子についてはapp>views>about_nil_guard.rbを参照すること -->
           <%= link_to("削除", post, class: "float-right ml-1", method: :delete, data: { confirm: "本当に削除しますか？" }) %>
           <%= link_to("編集", edit_post_path(post), class: "float-right ml-1") %>
         <% end %>
         <%= link_to("詳細", post, class: "float-right") %>
       </td>
-
     </tr>
-
   <% end %>
   </tbody>
 </table>

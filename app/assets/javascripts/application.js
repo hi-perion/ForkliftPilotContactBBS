@@ -14,10 +14,6 @@
 //= require activestorage
 //= require turbolinks
 
-// 各ビューごとにJavaScriptを適用するために「 require_tree . 」が記述されている行を削除する。
-// 「 require_tree . 」は、このファイル(application.js)が入っているフォルダ(javascriptsフォルダ)内のjs(coffee)ファイルを
-// すべてのビューに読み込むという意味である。
-
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets

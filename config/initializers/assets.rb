@@ -13,10 +13,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-
-# scssファイルおよびcoffeeファイルをcssファイル、jsファイルに変換する方法
-# Rails.application.config.assets.precompile += %w( coffeeファイル名.js scssファイル名.css )
-# でscssファイルおよびcoffeeファイルをcssファイル、jsファイルに変換することができる。
-# (拡張子が変換後のjs、cssであることに注意すること)
+# scssファイル、coffeeファイルをcssファイル、jsファイルに変換
 Rails.application.config.assets.precompile += %w( posts_index.js posts_index.css )
-# この一文はposts_indexファイルが元からjs、cssファイルでも必要な模様
