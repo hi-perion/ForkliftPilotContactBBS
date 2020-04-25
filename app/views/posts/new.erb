@@ -3,15 +3,15 @@
   <h5 class="card-header text-center text-white bg-success">新規投稿フォーム</h5>
   <div class="card-body">
     <div class="row form-group">
-      <%= f.label :pilot, "パイロット", class: "col-sm-2" %>
+      <%= f.label :pilot, "操縦者名", class: "col-sm-2" %>
       <%= f.text_field :pilot, class: "col-sm-6 form-control", value: @post.pilot %>
     </div>
     <div class="row form-group">
-      <%= f.label :machine, "搭乗機体", class: "col-sm-2" %>
+      <%= f.label :machine, "搭乗機種", class: "col-sm-2" %>
       <%= f.text_field :machine, class: "col-sm-6 form-control", value: @post.machine %>
     </div>
     <div class="row form-group">
-      <%= f.label :image, "画像", class: "col-sm-2" %>
+      <%= f.label :image, "積荷画像", class: "col-sm-2" %>
       <%= f.file_field :image, class: "col-sm-6" %>
     </div>
     <div class="row form-group">

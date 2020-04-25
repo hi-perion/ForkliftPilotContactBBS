@@ -9,22 +9,19 @@
   <div class="jumbotron text-center" style="background:url(/background_image.jpg) center no-repeat;">  <!-- CSSで高さを調整 -->
   </div>
 </div>
-<p class="text-center">広い倉庫内で積荷を取りに行ったら誰かか移動してしまっていた。<br>そんな経験はありませんか？<br>
-                          そんなときはこのサイトを使って、移動した積荷の記録を報告し合って下さい。</p>
-
-
-
-
-
-
-
-<!-- 新規投稿画面へのリンク -->
-<h4 class="text-center"><%= link_to("移動した積荷の記録を投稿する", new_post_path) %></h4>
-
-<!-- テーブルのタイトル -->
-<h3 class="text-center mt-5">投稿一覧</h3>
+<p class="text-center">
+  広い倉庫内で積荷を取りに行ったら誰かか移動してしまっていた。<br>
+  そんな経験はありませんか？<br>
+  そんなときはこのサイトを使って移動した積荷の記録を報告し合って下さい。
+</p>
+<% if @current_user %>
+  <h4 class="text-center"><%= link_to("移動した積荷の記録を投稿する", new_post_path) %></h4>
+<% else %>
+  <h4 class="text-center"><%= link_to("新規登録される方はこちら", new_user_path) %></h4>
+<% end %>
 
 <!-- テーブル -->
+<h3 class="text-center mt-5">投稿一覧</h3>
 <table class="table table-bordered mx-auto w-75 my-5">
   <thead class="table-info text-center">
     <tr>
