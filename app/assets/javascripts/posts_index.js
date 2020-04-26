@@ -1,7 +1,7 @@
 $(function() {
 
     // ajax通信を定期的に実行するためにsetIntervalメソッドを定義
-    setInterval(update, 180000);
+    setInterval(update, 20000);
 
     // 投稿一覧画面の投稿テーブルに新規投稿分のレコードのみ追加するためのメソッドを定義
     function update() {
