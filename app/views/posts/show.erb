@@ -1,31 +1,31 @@
 <!-- 詳細画面のタイトル -->
-<h2 class="text-center mt-5">セリフの詳細</h2>
+<h2 class="text-center mt-5">連絡の詳細</h2>
 
 <!-- テーブル -->
 <table class="table table-bordered mx-auto w-75 mt-5">
   <tbody>
     <tr>
-      <th class="table-primary text-center" style="width:20%">パイロット</th>
+      <th class="table-primary text-center" style="width:20%">操縦者名</th>
       <td style="width:80%"><%= @post.pilot %></td>
     </tr>
     <tr>
-      <th class="table-primary text-center">搭乗機体</th>
+      <th class="table-primary text-center">搭乗機名</th>
       <td><%= @post.machine %></td>
     </tr>
     <tr>
-      <th class="table-primary text-center">所属</th>
+      <th class="table-primary text-center">積荷の種類</th>
       <td><%= @post.affiliation %></td>
     </tr>
     <tr>
-      <th class="table-primary text-center">セリフ</th>
+      <th class="table-primary text-center">連絡内容</th>
       <td><%= @post.speech %></td>
     </tr>
     <tr>
-      <th class="table-primary text-center">シリーズ</th>
+      <th class="table-primary text-center">メーカー</th>
       <td><%= @post.series %></td>
     </tr>
     <tr>
-      <th class="table-primary text-center">画像</th>
+      <th class="table-primary text-center">積荷画像</th>
       <% if @post.image.url %>
         <td><img src="<%= @post.image.url %>" class="img-fluid mx-auto d-block w-50 mt-2" ></td>
       <% else %>

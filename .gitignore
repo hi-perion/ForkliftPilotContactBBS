@@ -1,0 +1,4 @@
+tmp/cache/
+/Gemfile.lock
+log/development.log
+tmp/pids/server.pid
