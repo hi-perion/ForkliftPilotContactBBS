@@ -3,7 +3,7 @@
 
 # 開発環境
 ruby 2.4.5<br>
-Rails 5.2.4.1<br>
+rails 5.2.4.1<br>
 
 
 
