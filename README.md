@@ -1,3 +1,5 @@
-# ForkliftPilotContactBBSについて(h1)
+# ForkliftPilotContactBBSについて
+このアプリはフォークリフトの操縦者が連絡を取り合うための掲示板です<br>
 
-各種バージョン
+# 開発環境
+
