@@ -4,9 +4,13 @@
 # URL
 [https://forklift-pilot-contact-bbs.herokuapp.com/](https://forklift-pilot-contact-bbs.herokuapp.com/)<br>
 
-# 開発環境
+# 開発環境・使用技術
 ruby 2.4.5<br>
 rails 5.2.4.1<br>
+Bootstrap4<br>
+Javascript<br>
+JQuery<br>
+Ajax<br>
 
 # 実装した機能
 投稿機能<br>
