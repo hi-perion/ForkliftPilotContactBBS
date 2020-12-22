@@ -5,8 +5,8 @@
 [https://forklift-pilot-contact-bbs.herokuapp.com/](https://forklift-pilot-contact-bbs.herokuapp.com/)<br>
 
 テストユーザーとしてログインする場合は、以下のアカウントでログインして下さい。<br>
-メールアドレス：test@example.info<br>
-パスワード：testuser<br>
+メールアドレス：pilot@forklift.info<br>
+パスワード：forkliftuser<br>
 
 # 開発環境・使用技術
 ruby 2.4.5<br>
