@@ -1,8 +1,15 @@
-<!-- ページの見出し -->
-<h1 class="text-center mt-5 mb-3">ログイン</h1>
+<!-- テストユーザーのアカウント -->
+<p class="text-center mt-3">テストユーザーの方は以下でログインしてください。</p>
+<div style="display: flex; align-items: center; flex-direction: column">
+  <ul>
+    <li>メールアドレス：test@example.info</li>
+    <li>パスワード：testuser</li>
+  </ul>
+</div>
 
 <!-- ログインフォーム -->
-<%= form_with local: true, scope: :session, url: login_path, class: "card mx-auto border-dark w-50 mt-4 mb-4 shadow-lg" do |f| %>
+<%= form_with local: true, scope: :session, url: login_path, class: "card mx-auto border-dark w-50 mt-2 mb-4 shadow-lg" do |f| %>
+  <h2 class="card-header text-center text-white bg-info">ログイン</h2>
   <div class="card-body">
     <div class="row">
       <%= f.label :email, "メールアドレス", class: "offset-sm-1 col-sm-4" %>
