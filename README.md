@@ -4,7 +4,7 @@
 # URL
 [https://forklift-pilot-contact-bbs.herokuapp.com/](https://forklift-pilot-contact-bbs.herokuapp.com/)<br>
 
-テストユーザーとしてログインする場合は、以下のアカウントでログインして下さい。<br>
+テストユーザーとしてログインする場合は、以下のアカウントでログインしてください。<br>
 メールアドレス：pilot@forklift.info<br>
 パスワード：forkliftuser<br>
 
