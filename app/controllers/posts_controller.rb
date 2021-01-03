@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, flash: {success: "投稿しました"}
     else
-      flash.now[:failure] = "入力していない項目があります"    # failure
+      flash.now[:failure] = "入力していない項目があります"
       render :new
     end
   end
